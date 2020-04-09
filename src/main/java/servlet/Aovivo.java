@@ -12,21 +12,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(
-        name = "MyServlet",
-        urlPatterns = {"/hello"}
+        name = "AoVivo",
+        urlPatterns = {"/aovivo"}
 )
-public class HelloServlet extends HttpServlet {
 
+public class Aovivo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-        out.println(String.format("<h1>Olá mundo</h1>"));
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String nome = req.getParameter("nome");
-        PrintWriter out = resp.getWriter();
-        out.println(String.format("<h1> o nome do usuário é %s <h1>", nome));
+        out.println("<html>");
+        out.println("<form action ='http://localhost:8080/hello' method='POST'>");
+        out.println("Nome: <input type='text' name='nome'>");
+        out.println("input type='submit' value='Enviar'>");
+        out.println("</form");
+        out.println("</html>");
     }
 }
